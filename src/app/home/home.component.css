@@ -1,0 +1,16 @@
+.todosList {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+.date {
+  float: right;
+  margin: 0px;
+  font-size: 13px;
+}
+
+.title {
+  float: left;
+  margin: 0px;
+}

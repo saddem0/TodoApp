@@ -1,0 +1,29 @@
+<!-- <div>
+  <p>Title: {{ todo?.title }}</p>
+  <p>Description: {{ todo?.desc }}</p>
+  <p>Date: {{ todo?.date }}</p>
+  <p>Done: {{ todo?.done }}</p>
+</div> -->
+<button mat-raised-button routerLink="/">
+  <mat-icon matListIcon>keyboard_backspace</mat-icon> Back</button>
+<mat-nav-list class="todo">
+  <mat-list-item>
+    <h3 class="title">Title: </h3>
+    <p>{{ todo?.title | titlecase }}</p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <h3 class="title">Description: </h3>{{ todo?.desc | titlecase }}
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <h3 class="title">Date: </h3>{{ todo?.date | date:"dd/MM/yyyy" }}
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <h3 class="title">Done: </h3>{{ todo?.done }}
+  </mat-list-item>
+</mat-nav-list>
+
+<button mat-raised-button class="buttonClass">
+  <mat-icon matListIcon>mode_edit</mat-icon> Edit</button>

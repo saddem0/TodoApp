@@ -1,0 +1,38 @@
+<div class="container-card">
+  <mat-card class="example-card">
+    <mat-card-header class="centerClass">
+      <mat-card-title>
+        <h1>Register</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="getForm(registerForm)">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="First name" formControlName="firstName">
+          <mat-error *ngIf="registerForm.controls['firstName'].invalid">{{getErrorMessage(registerForm.controls['firstName'])}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Last name" formControlName="lastName">
+          <mat-error *ngIf="registerForm.controls['lastName'].invalid">{{getErrorMessage(registerForm.controls['lastName'])}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="E-mail" type="email" formControlName="email">
+          <mat-error *ngIf="registerForm.controls['email'].invalid">{{getErrorMessage(registerForm.controls['email'])}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" hintLabel="Min 8 characters">
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error *ngIf="registerForm.controls['password'].invalid">{{getErrorMessage(registerForm.controls['password'])}}</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions class="buttonClass">
+        <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Register</button>
+      </mat-card-actions>
+    </form>
+    <h6>You already have an account?
+      <a routerLink="/login">Login</a>
+    </h6>
+  </mat-card>
+</div>

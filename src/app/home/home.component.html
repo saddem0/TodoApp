@@ -1,0 +1,12 @@
+<mat-nav-list class="todosList">
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let todo of todos; index as i;">
+    <mat-icon matListIcon *ngIf="todo.done" style="color:green">done</mat-icon>
+    <mat-icon matListIcon *ngIf="!todo.done" style="color:red">clear</mat-icon>
+    <a matLine routerLink="todo/{{i}}">
+      <h3 class="title">{{ todo?.title | titlecase }} </h3>
+      <p class="date">{{ todo?.date | date:"dd/MM/yyyy" }}</p>
+    </a>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-nav-list>
