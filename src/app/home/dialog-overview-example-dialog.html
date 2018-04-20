@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>New Todo</h1>
+<div mat-dialog-content style="height:-webkit-fill-available;">
+  <mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="data.todo.title">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Description" [(ngModel)]="data.todo.desc">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.todo" cdkFocusInitial>Save</button>
+</div>

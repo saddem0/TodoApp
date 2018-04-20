@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{data.todo.title | titlecase}} Edit</h1>
+<div mat-dialog-content style="height:-webkit-fill-available;">
+  <label>Title: </label>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.todo.title" value="data.todo.title">
+  </mat-form-field>
+  <label>Description: </label>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.todo.desc" value="data.todo.desc">
+  </mat-form-field>
+  <div>
+    <label>Done? </label>
+    <mat-radio-group [(ngModel)]="data.todo.done">
+      <mat-radio-button [value]="true">Yes</mat-radio-button>
+      <mat-radio-button [value]="false">No</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.todo" cdkFocusInitial>Ok</button>
+</div>

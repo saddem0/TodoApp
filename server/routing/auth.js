@@ -33,15 +33,26 @@ router.post('/login', function (req, res) {
   };
   connection(db => {
     db.collection('users').findOne(qry).then(result => {
-      if (result)
-        res.send('welcome ' + result.name)
-      else {
-        res.send('email or password incorrect')
+      console.log(result);
+      if (result) {
+        let token = jwt.sign({
+          _id: result._id
+        }, 'secret', );
+        response.data = {
+          token: token
+        };
+        response.message = 'ok';
+        response.status = 200;
+        res.json(response);
+      } else {
+        sendError('Login Invalide', res, 401);
       }
     }).catch(err => {
       sendError(err, res, 501);
     })
   })
+
+
 })
 
 router.post('/register', function (req, res) {
@@ -54,12 +65,12 @@ router.post('/register', function (req, res) {
       if (result) {
         response.status = 401;
         response.message = "account already exists";
-        response.data = jwt.sign(result, 'james_bond');
+        response.data = jwt.sign(result, 'secret');
       } else {
         db.collection('users').insertOne(req.body)
         response.status = 200;
         response.message = "register succes";
-        response.data = jwt.sign(req.body, 'james_bond');
+        response.data = jwt.sign(req.body, 'secret', );
       }
       res.json(response)
     }).catch(err => {

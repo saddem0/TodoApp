@@ -6,6 +6,10 @@ export class ApiService {
 
   constructor(private http: Http) { }
 
+  login(user) {
+    return this.http.post('http://localhost:3000/auth/login', user);
+  }
+
   addUser(user) {
     // console.log(user);
     return this.http.post('http://localhost:3000/auth/register', user);
@@ -36,5 +40,16 @@ export class ApiService {
 
   getTodo(index) {
     return this.http.get('http://localhost:3000/api/todos/' + this.getUserId() + '/' + index);
+  }
+
+  updateTodo(todo, index) {
+    return this.http.put('http://localhost:3000/api/todos/' + this.getUserId() + '/' + index, todo);
+  }
+  addTodo(todo) {
+    console.log(todo);
+    return this.http.post('http://localhost:3000/api/todos/' + this.getUserId(), todo);
+  }
+  deleteTodo(i) {
+    return this.http.delete('http://localhost:3000/api/todos/' + this.getUserId() + '/' + i);
   }
 }

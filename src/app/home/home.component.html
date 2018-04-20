@@ -1,3 +1,6 @@
+<button mat-fab style="margin-left: 75%; margin-top:80px" (click)="openDialog()">
+  <mat-icon matListIcon>note_add</mat-icon>
+</button>
 <mat-nav-list class="todosList">
   <mat-divider></mat-divider>
   <mat-list-item *ngFor="let todo of todos; index as i;">
@@ -8,5 +11,8 @@
       <p class="date">{{ todo?.date | date:"dd/MM/yyyy" }}</p>
     </a>
     <mat-divider></mat-divider>
+    <span>
+      <mat-icon matListIcon (click)="deleteTodo(i)">delete_forever</mat-icon>
+    </span>
   </mat-list-item>
 </mat-nav-list>
